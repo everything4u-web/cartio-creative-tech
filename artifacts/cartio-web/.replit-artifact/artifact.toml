@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "CARTIO.in"
+description = "A premium freelance technology and creative studio website for CARTIO.in, showcasing web development, design, video editing, AI automation, and custom digital solutions through an interactive portfolio experience."
+version = "1.0.0"
+id = "artifacts/cartio-web"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 19061
+
+[services.development]
+run = "pnpm --filter @workspace/cartio-web run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/cartio-web", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/cartio-web/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "19061"
+BASE_PATH = "/"

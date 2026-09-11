@@ -1,0 +1,1 @@
+- [WebGL fallback behavior](webgl-fallback.md) — gate 3D initialization behind capability checks so preview/browser WebGL failures never break the page.
